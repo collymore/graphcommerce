@@ -7,7 +7,5 @@ tasks:
       jq 'del(.scripts) | with_entries( if .key | contains("scripts_local") then .key |= sub("scripts_local";"scripts") else . end)' package.json > _.json && mv _.json package.json
       cp -R .env.example .env
       rm CHANGELOG.md && touch CHANGELOG.md
-      rm -rf node_modules && rm -rf .next
-      yarn
-      yarn codegen
+      rm -rf node_modules && rm -rf .next && yarn && yarn codegen
     command: cd /workspace/graphcommerce/my-project && npm run dev
